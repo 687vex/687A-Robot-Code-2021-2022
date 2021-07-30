@@ -16,7 +16,7 @@ Official robot code of VEX Robotics Team 687A for the 2021-2022 Season
 
 # Competition Code Template
 ## Instructions for Team:
-This is the competition template for CAMS VEX 687C: The Nerd Herd for the 2020-2021 season. Changes to the robot's code shall be committed here. Make sure your program meets our [Code Documentation Guidelines](https://github.com/687vex/Competition-Template-2020-2021/blob/main/CodeDocumentation.md)
+This is the competition template for CAMS VEX 687C: The Nerd Herd for the 2021-2022 season. Changes to the robot's code shall be committed here. Make sure your program meets our [Code Documentation Guidelines](https://github.com/687vex/Competition-Template-2021-2022/blob/main/CodeDocumentation.md)
 
 ## Editing Repositories
 If for some reason you want to clone the code locally, follow one of these methods:
@@ -43,9 +43,9 @@ This project is licensed under [GNU v3.0](https://opensource.org/licenses/GPL-3.
 ## Support Us!
 Give this repo a ⭐️ if you found this project helpful!
 
-[contributors-shield]: https://img.shields.io/github/contributors/687vex/687C-Robot-Code-2020-2021.svg?style=for-the-badge
-[contributors-url]: https://github.com/687vex/687C-Robot-Code-2020-2021/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/687vex/687C-Robot-Code-2020-2021.svg?style=for-the-badge
-[forks-url]: https://github.com/687vex/687C-Robot-Code-2020-2021/network/members
-[stars-shield]: https://img.shields.io/github/stars/687vex/687C-Robot-Code-2020-2021.svg?style=for-the-badge
-[stars-url]: https://github.com/687vex/687C-Robot-Code-2020-2021/stargazers
+[contributors-shield]: https://img.shields.io/github/contributors/687vex/687A-Robot-Code-2021-2022.svg?style=for-the-badge
+[contributors-url]: https://github.com/687vex/687A-Robot-Code-2021-2022/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/687vex/687A-Robot-Code-2021-2022.svg?style=for-the-badge
+[forks-url]: https://github.com/687vex/687A-Robot-Code-2021-2022/network/members
+[stars-shield]: https://img.shields.io/github/stars/687vex/687A-Robot-Code-2021-2022.svg?style=for-the-badge
+[stars-url]: https://github.com/687vex/687A-Robot-Code-2021-2022/stargazers

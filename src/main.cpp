@@ -1,9 +1,10 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       C:\Users\Miguel                                           */
+/*    Author:       VEX 687A                                                  */
 /*    Created:      Thu Jul 29 2021                                           */
-/*    Description:  V5 project                                                */
+/*    Description:  Official robot code of VEX Robotics Team 687A             */
+/*                  for the 2021-2022 Season                                  */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
 
@@ -58,13 +59,6 @@ void autonomous(void) {
   }
 }
 
-
-void displayStats(void) {
-  Brain.Screen.clearScreen();
-  Brain.Screen.setCursor(1, 1);
-  Brain.Screen.print("| port | part_type | part_name | part_value |");
-}
-
 /////////////////////////////////////////////////////////////////////////////////////////
 //
 //                               Driver-Based Control
@@ -81,7 +75,6 @@ void drivercontrol(void) {
     frontRight.spin(directionType::rev,Controller1.Axis2.value(), velocityUnits::pct);
     backRight.spin(directionType::rev,Controller1.Axis2.value(), velocityUnits::pct);
 
-    displayStats();
   }
 }
 

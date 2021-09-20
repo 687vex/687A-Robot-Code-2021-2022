@@ -69,9 +69,11 @@ void drivercontrol(void) {
 
   while (true) {
     // spin to win 
+    // Left Drive Control (Left Joystick)
     frontLeft.spin(directionType::fwd,Controller1.Axis3.value(), velocityUnits::pct);
     backLeft.spin(directionType::fwd,Controller1.Axis3.value(), velocityUnits::pct);
-
+    
+    // Left Drive Control (Right Joystick)
     frontRight.spin(directionType::rev,Controller1.Axis2.value(), velocityUnits::pct);
     backRight.spin(directionType::rev,Controller1.Axis2.value(), velocityUnits::pct);
 

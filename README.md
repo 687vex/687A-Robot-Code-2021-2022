@@ -16,7 +16,7 @@ Official robot code of VEX Robotics Team 687A for the 2021-2022 Season
 
 # Competition Code Template
 ## Instructions for Team:
-This is the competition template for CAMS VEX 687C: The Nerd Herd for the 2021-2022 season. Changes to the robot's code shall be committed here. Make sure your program meets our [Code Documentation Guidelines](https://github.com/687vex/Competition-Template-2021-2022/blob/main/CodeDocumentation.md)
+This is the competition template for CAMS VEX 687A: The Nerd Herd for the 2021-2022 season. Changes to the robot's code shall be committed here. Make sure your program meets our [Code Documentation Guidelines](https://github.com/687vex/Competition-Template-2021-2022/blob/main/CodeDocumentation.md)
 
 ## Editing Repositories
 If for some reason you want to clone the code locally, follow one of these methods:

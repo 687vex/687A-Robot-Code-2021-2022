@@ -15,6 +15,7 @@ motor frontRight = motor(PORT10, ratio18_1, false);
 motor backRight = motor(PORT20, ratio18_1, false);
 inertial Inertial = inertial(PORT15);
 motor ringIntake = motor(PORT5, ratio18_1, false);
+motor frontMogoIntake = motor(PORT6, ratio18_1, false);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

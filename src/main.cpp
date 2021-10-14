@@ -1,3 +1,16 @@
+// ---- START VEXCODE CONFIGURED DEVICES ----
+// Robot Configuration:
+// [Name]               [Type]        [Port(s)]
+// Controller1          controller                    
+// frontLeft            motor         1               
+// backLeft             motor         11              
+// frontRight           motor         10              
+// backRight            motor         20              
+// Inertial             inertial      15              
+// ringIntake           motor         5               
+// frontMogoIntake      motor         6               
+// ---- END VEXCODE CONFIGURED DEVICES ----
+
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
@@ -7,18 +20,6 @@
 /*                  for the 2021-2022 Season                                  */
 /*                                                                            */
 /*----------------------------------------------------------------------------*/
-
-// ---- START VEXCODE CONFIGURED DEVICES ----
-// Robot Configuration:
-// [Name]               [Type]        [Port(s)]
-// Controller1          controller                    
-// frontLeft            motor         1               
-// backLeft             motor         11              
-// frontRight           motor         10              
-// backRight            motor         20
-// Inertial             inertial      15   
-// ringIntake           motor         5
-// ---- END VEXCODE CONFIGURED DEVICES ----
 
 /** Drive used: Standard Drivetrain/Skid-Steer-Drive
  *   Skid-Steer-Drive configuration:
@@ -31,7 +32,7 @@
  *    XXXX            XXXX
  *    XXXX            XXXX
  *     BL              BR 
-*/
+**/
 
 #include "vex.h"
 using namespace vex;
@@ -88,6 +89,15 @@ void drivercontrol(void) {
     else if (Controller1.ButtonB.pressing()) { 
       // Ring Intake Control (ButtonUp and ButtonDown)
       ringIntake.spin(vex::directionType::rev, ringIntakePercent, vex::velocityUnits::pct);
+    }
+
+    if (Controller1.ButtonR1.pressing()) {
+      // Ring Intake Control (ButtonUp and ButtonDown)
+      frontMogoIntake.spin(vex::directionType::fwd, ringIntakePercent, vex::velocityUnits::pct);
+    }
+    else if (Controller1.ButtonR2.pressing()) { 
+      // Ring Intake Control (ButtonUp and ButtonDown)
+      frontMogoIntake.spin(vex::directionType::rev, ringIntakePercent, vex::velocityUnits::pct);
     }
     vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }

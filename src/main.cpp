@@ -15,8 +15,9 @@
 // frontLeft            motor         1               
 // backLeft             motor         11              
 // frontRight           motor         10              
-// backRight            motor         20              
-// Inertial             inertial      15             
+// backRight            motor         20
+// Inertial             inertial      15   
+// ringIntake           motor         5
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 /** Drive used: Standard Drivetrain/Skid-Steer-Drive
@@ -79,8 +80,16 @@ void drivercontrol(void) {
     // Left Drive Control (Right Joystick)
     frontRight.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
     backRight.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
-
-    vex::task::sleep(20); // Sleep the task for a short amount of time to prevent wasted resources
+    
+    if (Controller1.ButtonA.pressing()) {
+      // Ring Intake Control (ButtonUp and ButtonDown)
+      ringIntake.spin(vex::directionType::fwd, ringIntakePercent, vex::velocityUnits::pct);
+    }
+    else if (Controller1.ButtonB.pressing()) { 
+      // Ring Intake Control (ButtonUp and ButtonDown)
+      ringIntake.spin(vex::directionType::rev, ringIntakePercent, vex::velocityUnits::pct);
+    }
+    vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }
 }
 

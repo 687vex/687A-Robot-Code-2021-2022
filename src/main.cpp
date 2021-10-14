@@ -16,7 +16,7 @@
 // backLeft             motor         11              
 // frontRight           motor         10              
 // backRight            motor         20              
-// Inertial             inertial      15              
+// Inertial             inertial      15             
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 /** Drive used: Standard Drivetrain/Skid-Steer-Drive
@@ -65,18 +65,22 @@ void autonomous(void) {
 //
 /////////////////////////////////////////////////////////////////////////////////////////
 void drivercontrol(void) {
+  Brain.Screen.clearScreen();
   Brain.Screen.print("Hello World!\n");
+
+  int ringIntakePercent = 100;
 
   while (true) {
     // spin to win 
     // Left Drive Control (Left Joystick)
-    frontLeft.spin(directionType::fwd,Controller1.Axis3.value(), velocityUnits::pct);
-    backLeft.spin(directionType::fwd,Controller1.Axis3.value(), velocityUnits::pct);
+    frontLeft.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+    backLeft.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
     
     // Left Drive Control (Right Joystick)
-    frontRight.spin(directionType::rev,Controller1.Axis2.value(), velocityUnits::pct);
-    backRight.spin(directionType::rev,Controller1.Axis2.value(), velocityUnits::pct);
+    frontRight.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
+    backRight.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
 
+    vex::task::sleep(20); // Sleep the task for a short amount of time to prevent wasted resources
   }
 }
 

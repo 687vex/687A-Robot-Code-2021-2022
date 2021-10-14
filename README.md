@@ -10,7 +10,7 @@ Official robot code of VEX Robotics Team 687A for the 2021-2022 Season
 
 ### Built With
 
--   VEXcode Pro
+-   VEXcode Text Pro V5
 -   C++
 -   Git
 

@@ -1,15 +1,15 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Controller1          controller
-// frontLeft            motor         1
-// backLeft             motor         11
-// frontRight           motor         10
-// backRight            motor         20
-// ringIntake           motor         5
-// frontLeftMogoIntake  motor         6
-// frontRightMogoIntake motor         7
-// Inertial             inertial      15
+// Controller1          controller                    
+// frontLeft            motor         1               
+// backLeft             motor         11              
+// frontRight           motor         10              
+// backRight            motor         20              
+// Inertial             inertial      15              
+// ringIntake           motor         5               
+// frontLeftMogoIntake  motor         6               
+// frontRightMogoIntake motor         7 
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 /*----------------------------------------------------------------------------*/
@@ -57,11 +57,7 @@ void pre_auton(void) {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 void autonomous(void) {
-  while (true) // While true is true, repeat the commands in the next {}
-  {
-    while (!Brain.Screen.pressing()) {} // while the screen is not being pressed, do nothing
-    Brain.Screen.printAt(Brain.Screen.xPosition(), Brain.Screen.yPosition(), "Ouch"); // print 'Ouch' where the screen was pressed
-  }
+  
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -75,7 +71,7 @@ void drivercontrol(void) {
   Brain.Screen.print("Hello World!\n");
 
   int ringIntakePercent = 50;
-  int mogoIntakePercent = 50;
+  int mogoIntakePercent = 100;
 
   while (true) {
     // spin to win 
@@ -113,7 +109,7 @@ void drivercontrol(void) {
       frontLeftMogoIntake.stop(vex::brakeType::hold);
       frontRightMogoIntake.stop(vex::brakeType::hold);
     }
-    vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
+    vex::task::sleep(10); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }
 }
 

@@ -8,8 +8,7 @@
 // backRight            motor         20              
 // Inertial             inertial      15              
 // ringIntake           motor         5               
-// frontLeftMogoIntake  motor         6               
-// frontRightMogoIntake motor         7 
+// frontMogoIntake      motor         6               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 /*----------------------------------------------------------------------------*/
@@ -57,7 +56,22 @@ void pre_auton(void) {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 void autonomous(void) {
-  
+  while (true) // While true is true, repeat the commands in the next {}
+  {
+    //while (!Brain.Screen.pressing()) {} // while the screen is not being pressed, do nothing
+    //Brain.Screen.printAt(Brain.Screen.xPosition(), Brain.Screen.yPosition(), "Ouch"); // print 'Ouch' where the screen was pressed
+    frontLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
+    backLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
+    frontRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
+    backRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, true);
+
+    //code for picking up mogo
+    
+    frontLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
+    backLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
+    frontRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
+    backRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, true);
+  }
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -70,8 +84,7 @@ void drivercontrol(void) {
   Brain.Screen.clearScreen();
   Brain.Screen.print("Hello World!\n");
 
-  int ringIntakePercent = 50;
-  int mogoIntakePercent = 100;
+  int ringIntakePercent = 100;
 
   while (true) {
     // spin to win 
@@ -80,8 +93,8 @@ void drivercontrol(void) {
     backLeft.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
     
     // Left Drive Control (Right Joystick)
-    frontRight.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
-    backRight.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
+    frontRight.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
+    backRight.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
     
     if (Controller1.ButtonA.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
@@ -91,25 +104,16 @@ void drivercontrol(void) {
       // Ring Intake Control (ButtonUp and ButtonDown)
       ringIntake.spin(vex::directionType::rev, ringIntakePercent, vex::velocityUnits::pct);
     }
-    else {
-      ringIntake.stop(vex::brakeType::hold);
-    }
 
     if (Controller1.ButtonR1.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
-      frontLeftMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
-      frontRightMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
+      frontMogoIntake.spin(vex::directionType::fwd, ringIntakePercent, vex::velocityUnits::pct);
     }
     else if (Controller1.ButtonR2.pressing()) { 
       // Ring Intake Control (ButtonUp and ButtonDown)
-      frontLeftMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
-      frontRightMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
+      frontMogoIntake.spin(vex::directionType::rev, ringIntakePercent, vex::velocityUnits::pct);
     }
-    else {
-      frontLeftMogoIntake.stop(vex::brakeType::hold);
-      frontRightMogoIntake.stop(vex::brakeType::hold);
-    }
-    vex::task::sleep(10); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
+    vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }
 }
 

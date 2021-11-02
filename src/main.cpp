@@ -56,22 +56,19 @@ void pre_auton(void) {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 void autonomous(void) {
-  while (true) // While true is true, repeat the commands in the next {}
-  {
-    //while (!Brain.Screen.pressing()) {} // while the screen is not being pressed, do nothing
-    //Brain.Screen.printAt(Brain.Screen.xPosition(), Brain.Screen.yPosition(), "Ouch"); // print 'Ouch' where the screen was pressed
-    frontLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
-    backLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
-    frontRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
-    backRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, true);
+  frontLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
+  backLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
+  frontRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
+  backRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, true);
 
-    //code for picking up mogo
-    
-    frontLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
-    backLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
-    frontRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
-    backRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, true);
-  }
+  // code for picking up mogo
+  frontLeftMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationunits::deg, false);
+  frontRightMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationunits::deg, true);
+  
+  frontLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
+  backLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
+  frontRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
+  backRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, true);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////

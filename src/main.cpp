@@ -56,19 +56,19 @@ void pre_auton(void) {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 void autonomous(void) {
-  frontLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
-  backLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
-  frontRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, false);
-  backRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationunits::deg, true);
+  frontLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
+  backLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
+  frontRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
+  backRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, true);
 
   // code for picking up mogo
-  frontLeftMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationunits::deg, false);
-  frontRightMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationunits::deg, true);
+  frontLeftMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationUnits::deg, false);
+  frontRightMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationUnits::deg, true);
   
-  frontLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
-  backLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
-  frontRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, false);
-  backRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationunits::deg, true);
+  frontLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
+  backLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
+  frontRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
+  backRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, true);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -82,6 +82,7 @@ void drivercontrol(void) {
   Brain.Screen.print("Hello World!\n");
 
   int ringIntakePercent = 100;
+  int mogoIntakePercent = 100;
 
   while (true) {
     // spin to win 
@@ -104,11 +105,11 @@ void drivercontrol(void) {
 
     if (Controller1.ButtonR1.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
-      frontMogoIntake.spin(vex::directionType::fwd, ringIntakePercent, vex::velocityUnits::pct);
+      frontLeftMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
     }
     else if (Controller1.ButtonR2.pressing()) { 
       // Ring Intake Control (ButtonUp and ButtonDown)
-      frontMogoIntake.spin(vex::directionType::rev, ringIntakePercent, vex::velocityUnits::pct);
+      frontRightMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
     }
     vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }

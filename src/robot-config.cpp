@@ -9,14 +9,13 @@ brain  Brain;
 
 // VEXcode device constructors
 controller Controller1 = controller(primary);
-motor frontLeft = motor(PORT1, ratio18_1, false);
-motor backLeft = motor(PORT11, ratio18_1, false);
-motor frontRight = motor(PORT10, ratio18_1, true);
-motor backRight = motor(PORT20, ratio18_1, true);
+motor frontLeftDrive = motor(PORT1, ratio18_1, false);
+motor backLeftDrive = motor(PORT11, ratio18_1, false);
+motor frontRightDrive = motor(PORT10, ratio18_1, true);
+motor backRightDrive = motor(PORT20, ratio18_1, true);
 inertial Inertial = inertial(PORT15);
-motor ringIntake = motor(PORT5, ratio18_1, false);
 motor frontLeftMogoIntake = motor(PORT6, ratio36_1, true);
-motor frontRightMogoIntake = motor(PORT7, ratio36_1, false);
+motor frontRightMogoIntake = motor(PORT7, ratio36_1, true);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

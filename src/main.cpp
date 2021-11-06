@@ -2,13 +2,13 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// frontLeft            motor         1               
-// backLeft             motor         11              
-// frontRight           motor         10              
-// backRight            motor         20              
+// frontLeftDrive       motor         1               
+// backLeftDrive        motor         11              
+// frontRightDrive      motor         10              
+// backRightDrive       motor         20              
 // Inertial             inertial      15              
-// ringIntake           motor         5               
-// frontMogoIntake      motor         6               
+// frontLeftMogoIntake  motor         6               
+// frontRightMogoIntake motor         7               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 /*----------------------------------------------------------------------------*/
@@ -56,19 +56,19 @@ void pre_auton(void) {
 /////////////////////////////////////////////////////////////////////////////////////////
 
 void autonomous(void) {
-  frontLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
-  backLeft.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
-  frontRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
-  backRight.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, true);
+  frontLeftDrive.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
+  backLeftDrive.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
+  frontRightDrive.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
+  backRightDrive.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, true);
 
   // code for picking up mogo
   frontLeftMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationUnits::deg, false);
   frontRightMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationUnits::deg, true);
   
-  frontLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
-  backLeft.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
-  frontRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
-  backRight.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, true);
+  frontLeftDrive.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
+  backLeftDrive.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
+  frontRightDrive.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
+  backRightDrive.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, true);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -80,36 +80,26 @@ void autonomous(void) {
 void drivercontrol(void) {
   Brain.Screen.clearScreen();
   Brain.Screen.print("Hello World!\n");
-
-  int ringIntakePercent = 100;
+  
   int mogoIntakePercent = 100;
 
   while (true) {
     // spin to win 
     // Left Drive Control (Left Joystick)
-    frontLeft.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
-    backLeft.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+    frontLeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+    backLeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
     
     // Left Drive Control (Right Joystick)
-    frontRight.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
-    backRight.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
+    frontRightDrive.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
+    backRightDrive.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
     
-    if (Controller1.ButtonA.pressing()) {
-      // Ring Intake Control (ButtonUp and ButtonDown)
-      ringIntake.spin(vex::directionType::fwd, ringIntakePercent, vex::velocityUnits::pct);
-    }
-    else if (Controller1.ButtonB.pressing()) { 
-      // Ring Intake Control (ButtonUp and ButtonDown)
-      ringIntake.spin(vex::directionType::rev, ringIntakePercent, vex::velocityUnits::pct);
-    }
-
     if (Controller1.ButtonR1.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
       frontLeftMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
     }
     else if (Controller1.ButtonR2.pressing()) { 
       // Ring Intake Control (ButtonUp and ButtonDown)
-      frontRightMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
+      frontRightMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
     }
     vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }

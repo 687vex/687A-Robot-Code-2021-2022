@@ -2,13 +2,13 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// frontLeftDrive       motor         1               
-// backLeftDrive        motor         11              
-// frontRightDrive      motor         10              
-// backRightDrive       motor         20              
+// frontLeftDrive       motor         12              
+// backLeftDrive        motor         10              
+// frontRightDrive      motor         11              
+// backRightDrive       motor         1               
 // Inertial             inertial      15              
-// frontLeftMogoIntake  motor         6               
-// frontRightMogoIntake motor         7               
+// frontLeftMogoIntake  motor         20              
+// frontRightMogoIntake motor         19              
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 /*----------------------------------------------------------------------------*/

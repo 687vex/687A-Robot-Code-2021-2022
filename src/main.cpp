@@ -81,7 +81,7 @@ void drivercontrol(void) {
   Brain.Screen.clearScreen();
   Brain.Screen.print("Hello World!\n");
   
-  int mogoIntakePercent = 100;
+  int mogoIntakePercent = 25;
 
   while (true) {
     // spin to win 
@@ -96,10 +96,16 @@ void drivercontrol(void) {
     if (Controller1.ButtonR1.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
       frontLeftMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
+      frontRightMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
     }
     else if (Controller1.ButtonR2.pressing()) { 
       // Ring Intake Control (ButtonUp and ButtonDown)
-      frontRightMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
+      frontLeftMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
+      frontRightMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
+    }
+    else {
+      frontLeftMogoIntake.stop(vex::brakeType::brake);
+      frontRightMogoIntake.stop(vex::brakeType::brake);
     }
     vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }

@@ -90,8 +90,8 @@ void drivercontrol(void) {
     backLeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
     
     // Left Drive Control (Right Joystick)
-    frontRightDrive.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
-    backRightDrive.spin(vex::directionType::rev, Controller1.Axis2.value(), vex::velocityUnits::pct);
+    frontRightDrive.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
+    backRightDrive.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
     
     if (Controller1.ButtonR1.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)

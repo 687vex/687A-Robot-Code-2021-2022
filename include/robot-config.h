@@ -8,9 +8,9 @@ extern motor frontLeftDrive;
 extern motor backLeftDrive;
 extern motor frontRightDrive;
 extern motor backRightDrive;
+extern inertial Inertial;
 extern motor frontLeftMogoIntake;
 extern motor frontRightMogoIntake;
-extern inertial Inertial;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

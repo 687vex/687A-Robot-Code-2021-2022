@@ -46,6 +46,6 @@ ControllerButton btn_mg_it_front_bkd = ControllerDigital::R2;
 // @TODO: Add CustomOdometry.cpp and CustomOdometry.hpp
 CustomOdometry customOdom = CustomOdometry(); // object that calculates robot position
 // @TODO: Add Drivetrain.cpp and Drivetrain.hpp
-Drivetrain drivetrain = Drivetrain(); // used by DrivetrainStateMachine for drivetrain control
+Drivetrain drivetrain = Drivetrain(); // used for drivetrain control
 
 } // end namespace def

@@ -1,53 +1,100 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
+[![Issues][issues-shield]][issues-url]
+[![MIT License][license-shield]][license-url]
 
 # CAMS VEX 687A Robot Code 2021-2022
 
+<!-- PROJECT LOGO -->
 [<img src="assets/img/tipping-point-logo.png" align="right" width="150">](https://github.com/687vex/687A-Robot-Code-2021-2022)
 
-Official robot code of VEX Robotics Team 687A for the 2021-2022 Season
+Official robot code of VEX Robotics Team 687A: The Nerd Herd for the 2021-2022 Season
 
+<!-- BUILT WITH -->
 ### Built With
 
- -   PROS 3 for V5
+ - PROS 3 for V5:
    - OkapiLib
    - LVGL
- -   C++
- -   Git
+ - C++/C#
 
-# Competition Code Template
-## Instructions for Team:
-This is the competition template for CAMS VEX 687A: The Nerd Herd for the 2021-2022 season. Changes to the robot's code shall be committed here. Make sure your program meets our [Code Documentation Guidelines](https://github.com/687vex/Competition-Template-2021-2022/blob/main/CodeDocumentation.md)
+# How to Use 687A-Robot-Code-2021-2022
 
-## Editing Repositories
-If for some reason you want to clone the code locally, follow one of these methods:
+<!-- GETTING STARTED -->
+## Getting Started
 
-### Downloading from GitHub Website
-  1. Click the "Download Zip" Button at the bottom right of the page of the GitHub Repository
-  2. Extract the contents of the zip file
-  3. Note: main.c is the competition code
+To get a local copy up and running follow these simple example steps.
 
-### Downloading using GitHub Desktop from GitHub Website
-  1. Click the "Open with GitHub Desktop" Button at the bottom right of the page of the GitHub Repository
-  3. [Commiting with GitHub Desktop](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/committing-and-reviewing-changes-to-your-project#1-choosing-a-branch-and-making-changes)
+### Prerequisites
 
-### Downloading using Git commands
-  1. Open cmd and navigate to an appropriate directory and run the following command:
-  <br> ```gh repo clone <repository> [<directory>] [-- <gitflags>...] ```
+ - Working PROS >= 3.2.3 installation
+   - [PROS CLI](https://github.com/purduesigbots/pros-cli) is working
 
-# Contribute
-Contributions are always welcome! Please create a PR and include a description of how your PR will improve the overall robot code and what it does. [Making Contributions to a project guide](https://github.com/firstcontributions/first-contributions).
+ - OkapiLib
 
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/687vex/687A-Robot-Code-2021-2022.git
+   ```
+2. Update PROS CLI
+   - Update instructions can be found [here](https://pros.cs.purdue.edu/v5/releases/cli3.1.4.html#updating-to-the-new-version)
+
+## Usage
+
+To get started, run the following commands in the root directory of the repo:
+
+1. To build the code:
+   ```sh
+   pros build
+   ```
+   or
+
+   ```sh
+   pros make
+   ```
+
+2. To upload the code to the V5 Brain:
+   ```sh
+   pros upload
+   ```
+3. Steps 1-2 can also be simplified to:
+   ```sh
+   pros mu
+   ```
+
+<!-- CONTRIBUTING -->
+## Contributing
+
+Contributions are always welcome! Please create a Pull Request and include a description of how your Pull Request will improve the overall robot code and what it does.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+
+<!-- LICENSE -->
 ## License
-This project is licensed under [GNU v3.0](https://opensource.org/licenses/GPL-3.0) license.
 
+This project is licensed under the [MIT](https://opensource.org/licenses/MIT) License. See `LICENSE.txt` for more information.
+
+<!-- SUPPORT US -->
 ## Support Us!
+
 Give this repo a ⭐️ if you found this project helpful!
 
+<!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/687vex/687A-Robot-Code-2021-2022.svg?style=for-the-badge
 [contributors-url]: https://github.com/687vex/687A-Robot-Code-2021-2022/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/687vex/687A-Robot-Code-2021-2022.svg?style=for-the-badge
 [forks-url]: https://github.com/687vex/687A-Robot-Code-2021-2022/network/members
 [stars-shield]: https://img.shields.io/github/stars/687vex/687A-Robot-Code-2021-2022.svg?style=for-the-badge
 [stars-url]: https://github.com/687vex/687A-Robot-Code-2021-2022/stargazers
+[issues-shield]: https://img.shields.io/github/issues/687vex/687A-Robot-Code-2021-2022.svg?style=for-the-badge
+[issues-url]: https://github.com/687vex/687A-Robot-Code-2021-2022/issues
+[license-shield]: https://img.shields.io/github/license/687vex/687A-Robot-Code-2021-2022.svg?style=for-the-badge
+[license-url]: https://github.com/687vex/687A-Robot-Code-2021-2022/blob/master/LICENSE.txt

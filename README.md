@@ -9,7 +9,7 @@
 <!-- PROJECT LOGO -->
 [<img src="assets/img/tipping-point-logo.png" align="right" width="150">](https://github.com/687vex/687A-Robot-Code-2021-2022)
 
-Official robot code of VEX Robotics Team 687A: The Nerd Herd for the 2021-2022 Season
+Robot code of VEX Robotics Team 687A: The Nerd Herd for the 2021-2022 Season
 
 <!-- BUILT WITH -->
 ### Built With

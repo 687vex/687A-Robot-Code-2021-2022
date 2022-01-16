@@ -11,6 +11,6 @@
 |  07  |                             |  17  |                              |
 |  08  |                             |  18  |                              |
 |  09  |                             |  19  | Front Right Mogo Intake      |
-|  10  | Back Left Drivetrain Wheel  |  20  | Front Left Mogo Intake       |
+|  10  | Back Left Drivetrain Wheel  |  20  | Front Left Drivetrain Wheel  |
 +------+-----------------------------+------+------------------------------+
 ```

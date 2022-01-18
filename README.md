@@ -87,6 +87,11 @@ This project is licensed under the [MIT](https://opensource.org/licenses/MIT) Li
 
 Give this repo a ⭐️ if you found this project helpful!
 
+## Acknowledgments
+
+- [othneildrew's Best README Template](https://github.com/othneildrew/Best-README-Template)
+- [PROS 3 Documentation](https://pros.cs.purdue.edu/v5/index.html)
+
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/687vex/687A-Robot-Code-2021-2022.svg?style=for-the-badge
 [contributors-url]: https://github.com/687vex/687A-Robot-Code-2021-2022/graphs/contributors

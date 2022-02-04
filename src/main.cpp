@@ -58,7 +58,20 @@ void competition_initialize() {}
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {}
+void autonomous() {
+
+	float r = 3.7136;
+	float rpm = 200;
+
+	pros::Motor left_mtr(1);
+	pros::Motor right_mtr(2);
+
+	float ticks = 900 * r;
+
+	left_mtr.move_relative(ticks, rpm);
+	right_mtr.move_relative(ticks, rpm);
+
+}
 
 /**
  * Runs the operator control code. This function will be started in its own task

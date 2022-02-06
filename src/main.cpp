@@ -27,6 +27,8 @@ void initialize() {
 	pros::lcd::set_text(1, "Hello PROS User!");
 
 	pros::lcd::register_btn1_cb(on_center_button);
+
+	pros::ADIDigitalOut piston (8);
 }
 
 /**
@@ -65,11 +67,21 @@ void autonomous() {
 
 	pros::Motor left_mtr(1);
 	pros::Motor right_mtr(2);
+	pros::Motor lift_mtr(15);
 
 	float ticks = 900 * r;
 
 	left_mtr.move_relative(ticks, rpm);
 	right_mtr.move_relative(ticks, rpm);
+
+	pros::delay(500);
+	piston.set_value(true);
+	pros::delay(500);
+	lift_mtr(1.25 * 0.5 * 900, rpm);
+	pros::delay(500);
+
+	left_mtr.move_relative(-ticks, rpm);
+	right_mtr.move_relative(-ticks, rpm);
 
 }
 

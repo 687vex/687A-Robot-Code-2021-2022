@@ -62,17 +62,21 @@ void competition_initialize() {}
  */
 void autonomous() {
 
-	float r = 3.7136;
+	float r = 3.5;
 	float rpm = 200;
 
 	pros::Motor left_mtr(1);
 	pros::Motor right_mtr(2);
+	pros::Motor left_mtr_aux(3);
+	pros::Motor right_mtr_aux(4);
 	pros::Motor lift_mtr(15);
 
 	float ticks = 900 * r;
 
 	left_mtr.move_relative(ticks, rpm);
 	right_mtr.move_relative(ticks, rpm);
+	left_mtr_aux.move_relative(ticks, rpm);
+	right_mtr_aux.move_relative(ticks, rpm);
 
 	pros::delay(500);
 	piston.set_value(true);
@@ -82,6 +86,8 @@ void autonomous() {
 
 	left_mtr.move_relative(-ticks, rpm);
 	right_mtr.move_relative(-ticks, rpm);
+	left_mtr_aux.move_relative(-ticks, rpm);
+	right_mtr_aux.move_relative(-ticks, rpm);
 
 }
 
@@ -99,19 +105,32 @@ void autonomous() {
  * task, not resume it from where it left off.
  */
 void opcontrol() {
+	/*
 	pros::Controller master(pros::E_CONTROLLER_MASTER);
 	pros::Motor left_mtr(1);
 	pros::Motor right_mtr(2);
+	pros::Motor left_mtr_aux(3);
+	pros::Motor right_mtr_aux(4);
+	pros::Motor lift_mtr(15);
 
 	while (true) {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
+		int lift = master.get_digital(DIGITAL_R1) * 2 - 1;
+		bool claw = master.get_digital(DIGITAL_L1) == 1;
 		int left = master.get_analog(ANALOG_LEFT_Y);
 		int right = master.get_analog(ANALOG_RIGHT_Y);
 
-		left_mtr = left;
-		right_mtr = right;
+		left_mtr.move_velocity(200 * left / 127);
+		right_mtr.move_velocity(200 * right / 127);
+		left_mtr_aux.move_velocity(200 * left / 127);
+		right_mtr_aux.move_velocity(200 * right / 127);
+		
+		piston.set_value(claw);hyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+
+		lift_mtr.move_velocity(lift * 200);
 		pros::delay(20);
 	}
+	*/
 }

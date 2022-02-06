@@ -14,7 +14,7 @@ motor frontRightDrive = motor(PORT15, ratio18_1, false);
 motor backLeftDrive = motor(PORT2, ratio18_1, true);
 motor backRightDrive = motor(PORT16, ratio18_1, true);
 digital_out Pneumatics = digital_out(Brain.ThreeWirePort.A);
-motor clampGear = motor(PORT4, ratio18_1, false);
+motor clampGear = motor(PORT1, ratio18_1, false);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

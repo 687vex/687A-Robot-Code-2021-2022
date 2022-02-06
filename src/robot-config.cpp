@@ -9,10 +9,10 @@ brain  Brain;
 
 // VEXcode device constructors
 controller Controller1 = controller(primary);
-motor frontLeftDrive = motor(PORT1, ratio18_1, false);
-motor frontRightDrive = motor(PORT5, ratio18_1, true);
-motor backLeftDrive = motor(PORT11, ratio18_1, false);
-motor backRightDrive = motor(PORT15, ratio18_1, true);
+motor frontLeftDrive = motor(PORT3, ratio18_1, false);
+motor frontRightDrive = motor(PORT15, ratio18_1, false);
+motor backLeftDrive = motor(PORT2, ratio18_1, true);
+motor backRightDrive = motor(PORT16, ratio18_1, true);
 digital_out Pneumatics = digital_out(Brain.ThreeWirePort.A);
 motor clampGear = motor(PORT4, ratio18_1, false);
 

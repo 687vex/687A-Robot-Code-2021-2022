@@ -2,10 +2,10 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// frontLeftDrive       motor         1               
-// frontRightDrive      motor         5               
-// backLeftDrive        motor         11              
-// backRightDrive       motor         15              
+// frontLeftDrive       motor         3               
+// frontRightDrive      motor         15              
+// backLeftDrive        motor         2               
+// backRightDrive       motor         16              
 // Pneumatics           digital_out   A               
 // clampGear            motor         4               
 // ---- END VEXCODE CONFIGURED DEVICES ----
@@ -56,9 +56,42 @@ void pre_auton(void) {
 
 void autonomous(void) {
   // code for picking up mogo
-  float r = 3.5;
-	float rpm = 200;
-`    else {
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////
+//                                                                                     //
+//                               Driver-Based Control                                  //
+//                                                                                     //
+/////////////////////////////////////////////////////////////////////////////////////////
+
+void drivercontrol(void) {
+  Brain.Screen.clearScreen();
+  Brain.Screen.print("Hello World!\n");
+
+  int mogoIntakePercent = 25;
+
+  while (true) {
+    // spin to win
+    // Left Drive Control (Left Joystick)
+    frontLeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+    backLeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
+
+    // Left Drive Control (Right Joystick)
+    frontRightDrive.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
+    backRightDrive.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
+
+    if (Controller1.ButtonR1.pressing())
+    {
+      // Ring Intake Control (ButtonUp and ButtonDown)
+      frontLeftMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
+      frontRightMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
+    }
+    else if (Controller1.ButtonR2.pressing()) {
+      // Ring Intake Control (ButtonUp and ButtonDown)
+      frontLeftMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
+      frontRightMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
+    }
+    else {
       frontLeftMogoIntake.stop(vex::brakeType::brake);
       frontRightMogoIntake.stop(vex::brakeType::brake);
     }

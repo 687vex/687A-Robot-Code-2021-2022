@@ -7,7 +7,7 @@
 // backLeftDrive        motor         2               
 // backRightDrive       motor         16              
 // Pneumatics           digital_out   A               
-// clampGear            motor         4               
+// clampGear            motor         1               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 /*----------------------------------------------------------------------------*/
@@ -80,20 +80,16 @@ void drivercontrol(void) {
     frontRightDrive.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
     backRightDrive.spin(vex::directionType::fwd, Controller1.Axis2.value(), vex::velocityUnits::pct);
 
-    if (Controller1.ButtonR1.pressing())
-    {
+    if (Controller1.ButtonR1.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
-      frontLeftMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
-      frontRightMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
+      backRightDrive.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
     }
     else if (Controller1.ButtonR2.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
-      frontLeftMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
-      frontRightMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
+      backRightDrive.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
     }
     else {
-      frontLeftMogoIntake.stop(vex::brakeType::brake);
-      frontRightMogoIntake.stop(vex::brakeType::brake);
+      backRightDrive.stop(vex::brakeType::brake);
     }
     vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }

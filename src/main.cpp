@@ -2,11 +2,11 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Controller1          controller                    
-// frontLeftDrive       motor         3               
-// frontRightDrive      motor         15              
-// backLeftDrive        motor         2               
+// frontLeftDrive       motor         15              
+// frontRightDrive      motor         2               
+// backLeftDrive        motor         3               
 // backRightDrive       motor         16              
-// Pneumatics           digital_out   A               
+// clawPiston           digital_out   A               
 // clampGear            motor         1               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
@@ -73,7 +73,6 @@ void drivercontrol(void) {
   bool buttonPressed = false; // IGNORE, logic variable
 
   while (true) {
-
     // spin to win
     // Left Drive Control (Left Joystick)
     frontLeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
@@ -85,34 +84,24 @@ void drivercontrol(void) {
 
     if (Controller1.ButtonR1.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
-      backRightDrive.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
+      clampGear.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
     }
     else if (Controller1.ButtonR2.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
-      backRightDrive.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
+      clampGear.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
     }
     else {
-      backRightDrive.stop(vex::brakeType::brake);
+      clampGear.stop(vex::brakeType::brake);
     }
-    bool buttonX = Controller1.ButtonX.pressing();
 
     ////////////////////////////////////////////////////////////////////
     // Toggle Logic
-    if (buttonX && !buttonPressed) {
-      buttonPressed = true; 
-      clampHold = !clampHold;
-    }
-    else if (!buttonX) {
-      buttonPressed = false;
-    }
-
-    ////////////////////////////////////////////////////////////////////
-    // Code For toggle Enabled or Disabled
-    if(clampHold) {
-      Pneumatics.set(true);
-    }
+    if( Controller1.ButtonL1.pressing() ) {
+      clawPiston.set( true );
+      }
+    //Otherwise don’t activate
     else {
-      Pneumatics.set(false);
+      clawPiston.set( false );
     }
     vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }

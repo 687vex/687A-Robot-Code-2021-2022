@@ -8,7 +8,7 @@ extern motor frontLeftDrive;
 extern motor frontRightDrive;
 extern motor backLeftDrive;
 extern motor backRightDrive;
-extern digital_out Pneumatics;
+extern digital_out clawPiston;
 extern motor clampGear;
 
 /**

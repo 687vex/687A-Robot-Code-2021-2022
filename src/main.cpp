@@ -1,14 +1,13 @@
 // ---- START VEXCODE CONFIGURED DEVICES ----
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
-// Controller1          controller
-// frontLeftDrive       motor         12
-// backLeftDrive        motor         10
-// frontRightDrive      motor         11
-// backRightDrive       motor         1
-// Inertial             inertial      15
-// frontLeftMogoIntake  motor         20
-// frontRightMogoIntake motor         19
+// Controller1          controller                    
+// frontLeftDrive       motor         1               
+// frontRightDrive      motor         5               
+// backLeftDrive        motor         11              
+// backRightDrive       motor         15              
+// Pneumatics           digital_out   A               
+// clampGear            motor         4               
 // ---- END VEXCODE CONFIGURED DEVICES ----
 
 /*----------------------------------------------------------------------------*/
@@ -46,8 +45,7 @@ competition Competition;
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-void pre_auton(void)
-{
+void pre_auton(void) {
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -56,21 +54,8 @@ void pre_auton(void)
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-void autonomous(void)
-{
-  frontLeftDrive.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
-  backLeftDrive.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
-  frontRightDrive.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, false);
-  backRightDrive.spinFor(vex::directionType::fwd, 2076.79, vex::rotationUnits::deg, true);
-
+void autonomous(void) {
   // code for picking up mogo
-  frontLeftMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationUnits::deg, false);
-  frontRightMogoIntake.spinFor(vex::directionType::fwd, 135, vex::rotationUnits::deg, true);
-
-  frontLeftDrive.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
-  backLeftDrive.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
-  frontRightDrive.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, false);
-  backRightDrive.spinFor(vex::directionType::rev, 2076.79, vex::rotationUnits::deg, true);
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////
@@ -79,15 +64,13 @@ void autonomous(void)
 //                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////
 
-void drivercontrol(void)
-{
+void drivercontrol(void) {
   Brain.Screen.clearScreen();
   Brain.Screen.print("Hello World!\n");
 
   int mogoIntakePercent = 25;
 
-  while (true)
-  {
+  while (true) {
     // spin to win
     // Left Drive Control (Left Joystick)
     frontLeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
@@ -103,14 +86,12 @@ void drivercontrol(void)
       frontLeftMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
       frontRightMogoIntake.spin(vex::directionType::fwd, mogoIntakePercent, vex::velocityUnits::pct);
     }
-    else if (Controller1.ButtonR2.pressing())
-    {
+    else if (Controller1.ButtonR2.pressing()) {
       // Ring Intake Control (ButtonUp and ButtonDown)
       frontLeftMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
       frontRightMogoIntake.spin(vex::directionType::rev, mogoIntakePercent, vex::velocityUnits::pct);
     }
-    else
-    {
+    else {
       frontLeftMogoIntake.stop(vex::brakeType::brake);
       frontRightMogoIntake.stop(vex::brakeType::brake);
     }
@@ -125,8 +106,7 @@ void drivercontrol(void)
 /////////////////////////////////////////////////////////////////////////////////////////
 
 // Set up  competition and callbacks
-int main()
-{
+int main() {
   Brain.Screen.print("Hello World!\n");
 
   // Initializing Robot Configuration. DO NOT REMOVE!

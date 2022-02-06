@@ -68,9 +68,12 @@ void drivercontrol(void) {
   Brain.Screen.clearScreen();
   Brain.Screen.print("Hello World!\n");
 
-  int mogoIntakePercent = 25;
+  int mogoIntakePercent = 25;  
+  bool clampHold = false; // two-choice toggle, so we use bool
+  bool buttonPressed = false; // IGNORE, logic variable
 
   while (true) {
+
     // spin to win
     // Left Drive Control (Left Joystick)
     frontLeftDrive.spin(vex::directionType::fwd, Controller1.Axis3.value(), vex::velocityUnits::pct);
@@ -90,6 +93,26 @@ void drivercontrol(void) {
     }
     else {
       backRightDrive.stop(vex::brakeType::brake);
+    }
+    bool buttonX = Controller1.ButtonX.pressing();
+
+    ////////////////////////////////////////////////////////////////////
+    // Toggle Logic
+    if (buttonX && !buttonPressed) {
+      buttonPressed = true; 
+      clampHold = !clampHold;
+    }
+    else if (!buttonX) {
+      buttonPressed = false;
+    }
+
+    ////////////////////////////////////////////////////////////////////
+    // Code For toggle Enabled or Disabled
+    if(clampHold) {
+      Pneumatics.set(true);
+    }
+    else {
+      Pneumatics.set(false);
     }
     vex::task::sleep(20); // Sleep the task for a short amount of time (20 ms) to prevent wasted resources
   }

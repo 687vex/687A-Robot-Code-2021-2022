@@ -56,28 +56,21 @@ void pre_auton(void) {
 
 void autonomous(void) {
   // code for picking up mogo
-  clawPiston.set(true);
-  frontLeftDrive.setVelocity(200, vex::velocityUnits::pct);
-  backRightDrive.setVelocity(200, vex::velocityUnits::pct);
-  frontRightDrive.setVelocity(200, vex::velocityUnits::pct);
-  backLeftDrive.setVelocity(200, vex::velocityUnits::pct);
+  frontLeftDrive.spinFor(forward, 24.2, turns, false);
+  backRightDrive.spinFor(forward, 24.2, turns, false);
+  frontRightDrive.spinFor(forward, 24.2, turns, false);
+  backLeftDrive.spinFor(forward, 24.2, turns, true);
 
-  frontLeftDrive.spinFor(forward, 10.3, turns, false);
-  backRightDrive.spinFor(forward, 10.3, turns, false);
-  frontRightDrive.spinFor(forward, 10.3, turns, false);
-  backLeftDrive.spinFor(forward, 10.3, turns, true);
-
-  clawPiston.set(true);
   wait(0.25, seconds);
 
   clawPiston.set(false);
 
   wait(0.25, seconds);
 
-  frontLeftDrive.spinFor(reverse, 5.6, turns, false);
-  backRightDrive.spinFor(reverse, 5.6, turns, false);
-  frontRightDrive.spinFor(reverse, 5.6, turns, false);
-  backLeftDrive.spinFor(reverse, 5.6, turns, true);
+  frontLeftDrive.spinFor(reverse, 10.2, turns, false);
+  backRightDrive.spinFor(reverse, 10.2, turns, false);
+  frontRightDrive.spinFor(reverse, 10.2, turns, false);
+  backLeftDrive.spinFor(reverse, 10.2, turns, true);
 
 }
 
